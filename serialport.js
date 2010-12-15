@@ -44,7 +44,7 @@ function SerialPort(path) {
     this.readWatcher = new process.IOWatcher();
     this.empty_reads = 0;
     this.readWatcher.callback = function () {
-        sys.puts("read")
+        //sys.puts("read")
         me.read();
     };
     this.readWatcher.set(this.fd, true, false);
@@ -56,13 +56,13 @@ sys.inherits(SerialPort, events.EventEmitter);
 
 SerialPort.prototype.read = function () {
     if (this.fd) {
-        sys.puts("callback");
+        //sys.puts("callback");
         var buff = new Buffer(65535);
         data_read = serialport_native.read(this.fd, buff);
-        sys.p(buff);
+        //sys.p(buff);
         if (data_read > 0)   {
-            sys.puts("Read some data: " + data_read + " bytes");
-            sys.puts("Here is the data: " + buff.toString('utf8', 0, data_read));
+            //sys.puts("Read some data: " + data_read + " bytes");
+            //sys.puts("Here is the data: " + buff.toString('utf8', 0, data_read));
             this.emit('data', buff, data_read);
         }
     }
