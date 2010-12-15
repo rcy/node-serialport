@@ -63,7 +63,7 @@ SerialPort.prototype.read = function () {
         if (data_read > 0)   {
             sys.puts("Read some data: " + data_read + " bytes");
             sys.puts("Here is the data: " + buff.toString('utf8', 0, data_read));
-            me.emit('data', buff);
+            this.emit('data', buff, data_read);
         }
     }
 }
